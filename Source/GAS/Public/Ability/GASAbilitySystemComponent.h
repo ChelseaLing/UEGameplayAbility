@@ -15,7 +15,6 @@ public:
 	AActor* Instigator,
 	AActor* EffectCauser,
 	UObject* SourceObject,
-	const TArray<AActor*>& InActors,
 	const float CustomFloat) const;
 	
 	//添加Tags(非GE方式)

@@ -7,7 +7,6 @@ FGameplayEffectContextHandle UGASAbilitySystemComponent::MakeGASEffectContext(
 	AActor* Instigator,
 	AActor* EffectCauser,
 	UObject* SourceObject,
-	const TArray<AActor*>& InActors,
 	const float CustomFloat) const
 {
 	FGameplayEffectContextHandle Context = FGameplayEffectContextHandle(UAbilitySystemGlobals::Get().AllocGameplayEffectContext());
@@ -17,8 +16,6 @@ FGameplayEffectContextHandle UGASAbilitySystemComponent::MakeGASEffectContext(
 	if (!IsValid(EffectCauser)) { EffectCauser = AbilityActorInfo->AvatarActor.Get(); }
 	Context.AddInstigator(Instigator, EffectCauser);
 	Context.AddSourceObject(SourceObject);
-	Context.AddActors(UGASAbilityStatic::ToWeakObjectArray(InActors),true);
-	
 	//自定义参数
 	if (FGASGameplayEffectContext* EffectContext = static_cast<FGASGameplayEffectContext*>(Context.Get()))
 	{
